@@ -1,0 +1,13 @@
+package vn.eztek.springboot3starter.domain.key.entity;
+
+public enum KeyType {
+  FORGOT_PASSWORD,
+  ADMIN_CREATE,
+  REQUEST_CHANGE_EMAIL,
+  UPDATE_STATUS_AFTER_CHANGE_EMAIL,
+  REQUEST_CHANGE_PASSWORD,
+  RESTORE_ACCOUNT,
+  VERIFY_ACCOUNT,
+  ACTIVE_ACCOUNT,
+
+}

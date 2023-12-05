@@ -1,0 +1,187 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: ${activatedSpringProfile}
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springboottech?useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: postgres
+    password: 0326732670Binh#
+  data:
+    redis:
+      host: localhost
+      # port: 16379
+      port: 6379
+      # password: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+      timeout: 60000
+  #    redis:
+  #      host: localhost
+  #      port: 16379
+  #      password: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+  #      timeout: 60000
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+  servlet:
+    multipart:
+      enabled: 'true'
+      max-request-size: 25MB
+      max-file-size: 25MB
+  quartz:
+    properties:
+      org:
+        quartz:
+          jobStore:
+            useProperties: 'true'
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+            tablePrefix: QRTZ_
+            dataSource: myDataSource
+            isClustered: 'true'
+            clusterCheckinInterval: '20000'
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+          scheduler:
+            instanceId: AUTO
+            instanceName: quartz-cluster
+          instanceName: quartzScheduler
+          threadPool:
+            threadNamePrefix: MyQuartzThread
+            threadCount: '10'
+            threadPriority: '5'
+          instanceId: AUTO
+          dataSource:
+            myDataSource:
+              URL: jdbc:postgresql://localhost:5432/springboottech?currentSchema=quartz&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+              user: postgres
+              driver: org.postgresql.Driver
+              password: 0326732670Binh#
+
+azure:
+  storage:
+    container-reference: java-reactjs
+    connectionString: DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://localhost:10000/devstoreaccount1;
+    client:
+      uri: http://localhost:10000/devstoreaccount1
+
+
+jwt:
+  secret: M1l3ajloTjlEWmpYOTc5VnY0U3M3UFVCbUVoc2p6RTRQZlJoS0o5RUEzWm03VlVLREJ1eUxKbWdFWTRkTnZ1eQ==
+  accessTokenExpirationMs: 900000 # 15 minutes
+  refreshTokenExpirationMs: 259200000 #  3 days
+
+key-emulator: true
+
+mongodbAuthenticationDatabase: admin
+mongodbUsername: mongo
+mongodbPassword: TYyqM6npTxJcsYvc
+mongodbName: springboottech
+mongodbHost: localhost
+mongodbPort: 27017
+
+
+#sendgrid:
+#  apiKey: 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
+#  dynamicTemplateId:
+#    registration: d-e3cb6b3a40db452a9675ec4e883083b2
+#    forgotPassword: d-5bd276b6bc934211a83675b2292be2bd
+#    notificationStatus: d-63eb1cf299674d1a8f50a79a458c5baf
+#    changeEmail: d-281ccf90b40b4e53b7fadd6b2be4f223
+#    confirmAfterChangeEmail: d-059531eb463e403d972869b15f0dacd7
+#    inviteTalent: d-8e5b0ed6b4a946808da20bc729f880e3
+#    changePassword: d-a87560c2d4544f43925d7aeed8fdc454
+#    inviteMember: d-4361b9ffa64347049083ce486a7d7081
+#    activateMemberProject: d-1efca0d11d1740a89fb5fa361acb0bbc
+#    deactivateMemberProject: d-e9b7e6a109244d36a953267ec542b675
+#    confirmRestoreAccount: d-867dc38b9ee84626a6d3370f6971aa99
+#    deleteAccount: d-6525f64d35cb4039993f1ed1796aab02
+#    deleteProject: d-40c68501ad9c420e8dbd9304810dcf6f
+#    notificationCancelDeleteProject: d-534d9ac73c3942d4be6458cf3cbe472c
+#    notificationCompleteDeleteProject: d-0c6c4ad56ef64dfe96388f30b6db8abb
+#    notificationCompleteDeleteAccount: d-d35c37c5ff8e491ba82203cf66867e2e
+#    notificationVerifyAccount: d-38a304b6a2f549a6b8bcd25936ee8c51
+#    notificationDisableAccount: d-3558a021b63340be804414fffe671d12
+#    activeAccount: d-61e713ef63664649b4563f63dc2b009f
+#  fromMail: no-reply@eztek.vn
+#  name: Eztek Team
+#  client:
+#    uri: http://localhost:5173
+#  path:
+#    registration: /auth/sign-up/finish/
+#    resetPassword: /auth/reset-password/
+#    changeEmail: /auth/change-email/
+#    confirmAfterChangeEmail: /auth/change-email/confirm/
+#    inviteTalent: /invitation/
+#    projectDetail: /projects/%s
+#    restoreAccount: /account-restore
+#    confirmRestoreAccount: /account-restore/%s/confirm
+#    archiveProject: /projects/%s/archive
+#    verifyAccount: /auth/verify-account/
+#    activeAccount: /auth/active-account
+#    confirmActiveAccount: /auth/active-account/%s/confirm
+sendgrid:
+  apiKey: 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
+  dynamicTemplateId:
+    registration: d-78887e03f42c4b22babc9fa60c5d36c1 #active taif khoan
+    forgotPassword: d-082928198edf4555ac0439db9433e6b3
+    notificationStatus: d-459085e2ec574cb69fb78a26e3e403eb
+    changeEmail: d-e5642947738847cd86fed576ffc254f5
+    confirmAfterChangeEmail: d-605572003a714ab58ccc922a3476f8b3
+    inviteTalent: d-59779d160a854d59a7449b4079127e16
+    changePassword: d-4420145da9cc461eb374588a034623ae
+    inviteMember: d-be2cf06c969b4feaa2158f56f988c2e1
+    activateMemberProject: d-4fe62e54733840288947422ba2ddb895
+    deactivateMemberProject: d-85d04746f2aa4e2b937783e00212b1b5
+    confirmRestoreAccount: d-b9c34d2aa2b14298ab2167e7ad73422b
+    deleteAccount: d-b99baaa83b3143569f934cc0b31f7c2e
+    deleteProject: d-a47504bccd1a4a11bf5aa07e8134258a
+    notificationCancelDeleteProject: d-169e07ca630049e5826e49faed4b8e10
+    notificationCompleteDeleteProject: d-b72944c05ed0434d878a209b6fb52fdc
+    notificationCompleteDeleteAccount: d-c1eb0d4d94a94765a30c2bebb345ce81
+    notificationVerifyAccount: d-d50a9103e8a24deaae4eae9fd3e00ca0
+    notificationDisableAccount: d-73c358b9202f49528e8d1ac69b552294
+    activeAccount: d-0c1d54736d444854b831574a2180157b
+  fromMail: dh51903224@student.stu.edu.vn
+  name: dh51903224
+  client:
+    uri: http://localhost:5173
+  path:
+    registration: /auth/sign-up/finish/
+    resetPassword: /auth/reset-password/
+    changeEmail: /auth/change-email/
+    confirmAfterChangeEmail: /auth/change-email/confirm/
+    inviteTalent: /invitation/
+    projectDetail: /projects/%s
+    restoreAccount: /account-restore
+    confirmRestoreAccount: /account-restore/%s/confirm
+    archiveProject: /projects/%s/archive
+    verifyAccount: /auth/verify-account/
+    activeAccount: /auth/active-account
+    confirmActiveAccount: /auth/active-account/%s/confirm
+key:
+  expirationMs: 86400000
+  invitationMs: 604800000
+  expirationVerifyAccountMs: 604800000
+
+web:
+  cors:
+    allowed-origins: "http://localhost:8080, http://localhost:3000, http://localhost:5173"
+    allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+    max-age: 3600
+    allowed-headers: "*"
+    exposed-headers: "*"
+
+springdoc:
+  packagesToScan: vn.eztek.springboot3starter
+  swagger-ui:
+    enabled: true

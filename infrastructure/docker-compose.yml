@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  springboot3starter-postgres:
+    container_name: springboot3starter-postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: springboot3starter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: WaPpys6c4nGJGR6n
+    ports:
+      - "5432:5432"
+    networks:
+      - springboot3starter-network
+
+  springboot3starter-mongo:
+    container_name: springboot3starter-mongo
+    image: mongo:7.0.1-rc0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: TYyqM6npTxJcsYvc
+      MONGO_INITDB_DATABASE: springboot3starter
+    ports:
+      - "27018:27017"
+    networks:
+      - springboot3starter-network
+
+  springboot3starter-redis:
+    container_name: springboot3starter-redis
+    image: redis:6.2
+    ports:
+      - "16379:6379"
+    command: >
+      --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    networks:
+      - springboot3starter-network
+
+networks:
+  springboot3starter-network:
+    driver: bridge

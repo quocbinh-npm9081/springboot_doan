@@ -1,0 +1,61 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/springboot3starter?useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: admin
+    password: Eztek!2345
+  data:
+    redis:
+      port: '6379'
+      timeout: '6000'
+      password: GTmfyItigD8aNjtciLaXse7md4d2Ojry
+      database: '0'
+      host: redis-service
+  quartz:
+    properties:
+      org:
+        quartz:
+          jobStore:
+            useProperties: 'true'
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+            tablePrefix: QRTZ_
+            dataSource: myDataSource
+            isClustered: 'true'
+            clusterCheckinInterval: '20000'
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+          scheduler:
+            instanceId: AUTO
+            instanceName: quartz-cluster
+          instanceName: quartzScheduler
+          threadPool:
+            threadNamePrefix: MyQuartzThread
+            threadCount: '10'
+            threadPriority: '5'
+          instanceId: AUTO
+          dataSource:
+            myDataSource:
+              URL: jdbc:postgresql://localhost:5432/springboot3starter?currentSchema=quartz&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+              user: postgres
+              driver: org.postgresql.Driver
+              password: 0326732670Binh#
+
+azure:
+  storage:
+    connectionString: DefaultEndpointsProtocol=https;AccountName=saigonsoftware;AccountKey=WhEHyw841D6Im4LGy5swRZQU0UgkyYHzfeNH695bTrWwL/m4cMv/PLxy3kUsSF6pdjR2YO+eFa1PGZ0llMeEkA==;EndpointSuffix=core.windows.net
+    container-reference: java-reactjs
+    client:
+      uri: https://saigonsoftware.blob.core.windows.net
+
+mongodbAuthenticationDatabase: admin
+mongodbUsername: mongo
+mongodbPassword: E3pK6ZzNBNB3vP9P
+mongodbName: springboot3starter
+mongodbHost: mongo
+mongodbPort: 27017
+
+sendgrid:
+  client:
+    uri: https://reactjs.internship2023.eztek-testing.com
+
+web:
+  cors:
+    allowed-origins: "https://springboot.internship2023.eztek-testing.com, http://localhost:3000, https://reactjs.internship2023.eztek-testing.com, http://localhost:5173"
