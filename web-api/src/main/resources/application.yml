@@ -130,7 +130,7 @@ mongodbPort: 27017
 #    activeAccount: /auth/active-account
 #    confirmActiveAccount: /auth/active-account/%s/confirm
 sendgrid:
-  apiKey: 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
+  apiKey: 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
   dynamicTemplateId:
     registration: d-78887e03f42c4b22babc9fa60c5d36c1 #active taif khoan
     forgotPassword: d-082928198edf4555ac0439db9433e6b3
